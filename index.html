@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Math Champs Holiday Program F&B - Teaching Kit Offline</title>
+    <style>
+      :root {
+        --ink: #12333d;
+        --muted: #48656b;
+        --teal: #0f7776;
+        --teal-2: #2f9f9a;
+        --blue: #285f9e;
+        --sky: #a8def0;
+        --mint: #dcefd7;
+        --cream: #fff4bf;
+        --yellow: #ffd769;
+        --orange: #f6a34a;
+        --coral: #ef705f;
+        --purple: #7467d9;
+        --paper: #fffdf8;
+        --line: rgba(15, 119, 118, 0.28);
+        --shadow: 0 18px 45px rgba(18, 51, 61, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          linear-gradient(135deg, rgba(255, 244, 191, 0.82), rgba(168, 222, 240, 0.88) 52%, rgba(220, 239, 215, 0.92)),
+          #dcefd7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1180px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .hero {
+        min-height: 330px;
+        display: grid;
+        align-content: center;
+        gap: 22px;
+        padding: 44px;
+        border: 5px solid rgba(15, 119, 118, 0.36);
+        border-radius: 8px;
+        background:
+          linear-gradient(100deg, rgba(255, 253, 248, 0.96), rgba(255, 253, 248, 0.72)),
+          radial-gradient(circle at 88% 20%, rgba(255, 215, 105, 0.48), transparent 34%);
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--coral);
+        font-size: 0.9rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 860px;
+        margin-bottom: 0;
+        color: #0a6f70;
+        font-size: clamp(2.35rem, 6vw, 4.8rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 850px;
+        margin-bottom: 0;
+        color: #213f45;
+        font-size: 1.25rem;
+        line-height: 1.45;
+        font-weight: 680;
+      }
+
+      .quick-actions,
+      .day-links,
+      .resource-grid,
+      .mini-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border: 2px solid rgba(15, 119, 118, 0.45);
+        border-radius: 8px;
+        color: #082f35;
+        background: var(--paper);
+        font-size: 0.98rem;
+        font-weight: 840;
+        box-shadow: 0 8px 18px rgba(18, 51, 61, 0.08);
+      }
+
+      .button.primary {
+        color: #fffdf8;
+        background: #1b677a;
+        border-color: #1b677a;
+      }
+
+      .button.print {
+        background: var(--yellow);
+        border-color: rgba(246, 163, 74, 0.72);
+      }
+
+      .button.local {
+        background: #dcefd7;
+      }
+
+      .section {
+        margin-top: 28px;
+        padding: 28px;
+        border: 4px solid rgba(15, 119, 118, 0.26);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.88);
+        box-shadow: 0 14px 30px rgba(18, 51, 61, 0.09);
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        color: #0b6768;
+        font-size: 1.8rem;
+        line-height: 1.12;
+      }
+
+      .section-note {
+        max-width: 540px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-weight: 680;
+        line-height: 1.38;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .phase-card,
+      .day-card,
+      .check-card {
+        border: 3px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.94);
+      }
+
+      .phase-card {
+        min-height: 210px;
+        padding: 20px;
+      }
+
+      .phase-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #8b4513;
+        font-size: 0.96rem;
+        text-transform: uppercase;
+      }
+
+      .phase-card h3 {
+        margin-bottom: 10px;
+        color: #0b6768;
+        font-size: 1.35rem;
+      }
+
+      .phase-card p {
+        margin-bottom: 0;
+        color: #213f45;
+        line-height: 1.4;
+        font-weight: 650;
+      }
+
+      .days {
+        display: grid;
+        gap: 22px;
+      }
+
+      .day-card {
+        overflow: hidden;
+      }
+
+      .day-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        padding: 22px 24px;
+        color: #fffdf8;
+        background: #1b677a;
+      }
+
+      .day-header h3 {
+        margin-bottom: 6px;
+        font-size: 1.55rem;
+      }
+
+      .day-header p {
+        margin-bottom: 0;
+        color: rgba(255, 253, 248, 0.9);
+        font-weight: 680;
+      }
+
+      .duration {
+        display: inline-grid;
+        min-width: 92px;
+        min-height: 54px;
+        place-items: center;
+        padding: 8px 12px;
+        border-radius: 8px;
+        color: #592a08;
+        background: var(--yellow);
+        font-weight: 900;
+      }
+
+      .day-body {
+        display: grid;
+        gap: 18px;
+        padding: 22px 24px 24px;
+      }
+
+      .overview-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .overview-list li {
+        min-height: 84px;
+        padding: 14px;
+        border: 2px solid rgba(47, 159, 154, 0.28);
+        border-radius: 8px;
+        background: #f0fbfc;
+        color: #213f45;
+        font-weight: 720;
+        line-height: 1.34;
+      }
+
+      .resource-block {
+        display: grid;
+        gap: 10px;
+      }
+
+      .resource-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 0;
+        color: #0b6768;
+        font-size: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .resource-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.96rem;
+        font-weight: 680;
+        line-height: 1.38;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--orange);
+      }
+
+      .check-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .check-card {
+        padding: 18px;
+      }
+
+      .check-card h3 {
+        margin-bottom: 10px;
+        color: #0b6768;
+        font-size: 1.15rem;
+      }
+
+      .check-card ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #213f45;
+        line-height: 1.42;
+        font-weight: 650;
+      }
+
+      .notice {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border: 3px solid rgba(246, 163, 74, 0.58);
+        border-radius: 8px;
+        background: #fff8d6;
+        color: #592a08;
+        font-weight: 760;
+        line-height: 1.4;
+      }
+
+      footer {
+        margin-top: 28px;
+        color: #48656b;
+        text-align: center;
+        font-size: 0.95rem;
+        font-weight: 680;
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .section {
+          padding: 22px;
+        }
+
+        .timeline,
+        .overview-list,
+        .check-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head,
+        .day-header {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .duration {
+          justify-self: start;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .shell {
+          width: 100%;
+          padding: 0;
+        }
+
+        .hero,
+        .section,
+        .day-card,
+        .phase-card,
+        .check-card {
+          box-shadow: none;
+        }
+
+        .button {
+          border-color: #999;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Math Champs Holiday Program F&amp;B</p>
+        <h1 id="page-title">Teaching Kit Offline - GitHub Pages</h1>
+        <p class="lead">
+          Satu halaman digital untuk membuka seluruh perlengkapan mengajar kelas offline Pertemuan 1-3:
+          deck presentasi, PDF cadangan deck, pre-test, post-test, kunci jawaban guru, dan blind box/spin wheel cadangan.
+        </p>
+        <div class="quick-actions" aria-label="Akses cepat">
+          <a class="button primary" href="#pertemuan-1">Pertemuan 1</a>
+          <a class="button primary" href="#pertemuan-2">Pertemuan 2</a>
+          <a class="button primary" href="#pertemuan-3">Pertemuan 3</a>
+          <a class="button print" href="#materials-title">Lihat Materi</a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="flow-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Alur Program</p>
+            <h2 id="flow-title">Kelas Offline: 3 Pertemuan, Masing-Masing 100 Menit</h2>
+          </div>
+          <p class="section-note">Gunakan urutan ini agar guru pengganti pun bisa memahami benang merah program dari ide sampai market day.</p>
+        </div>
+        <div class="timeline">
+          <article class="phase-card">
+            <strong>Pertemuan 1</strong>
+            <h3>Learn &amp; Ideation</h3>
+            <p>Blind box bahan utama, ide produk, nama brand, target pembeli, harga awal, dan tugas diskusi di rumah.</p>
+          </article>
+          <article class="phase-card">
+            <strong>Pertemuan 2</strong>
+            <h3>Build Your Business Plan</h3>
+            <p>Hitung modal, pricing, packaging, display plan, dan production planner untuk dibuat di rumah.</p>
+          </article>
+          <article class="phase-card">
+            <strong>Pertemuan 3</strong>
+            <h3>Launch &amp; Market Day</h3>
+            <p>Sales script, setup booth, market day internal, catatan penjualan, hitung laba atau rugi, dan refleksi.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="materials-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Perlengkapan Final</p>
+            <h2 id="materials-title">Materi Per Pertemuan</h2>
+          </div>
+          <p class="section-note">Deck dipakai untuk presentasi via proyektor/TV kelas. Tombol PDF/test dibuka di tab baru agar lebih aman saat dipakai dari browser.</p>
+        </div>
+
+        <div class="days">
+          <article class="day-card" id="pertemuan-1">
+            <div class="day-header">
+              <div>
+                <h3>Pertemuan 1: Learn &amp; Ideation</h3>
+                <p>Menu Idea Hunt: blind box, brainstorming produk, brand, target pembeli, dan harga awal.</p>
+              </div>
+              <span class="duration">100 menit</span>
+            </div>
+            <div class="day-body">
+              <ul class="overview-list">
+                <li>Fokus siswa: menemukan ide produk lezat dan aman.</li>
+                <li>Fokus matematika: survey sederhana, harga awal, dan angka mudah.</li>
+                <li>Output: Worksheet ide, brand, target pembeli, dan tugas di rumah.</li>
+              </ul>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Deck Guru</p>
+                <div class="day-links">
+                  <a class="button primary" href="decks/pertemuan-1-teacher-deck.html">Buka Deck Presentasi</a>
+                  <a class="button print" href="pdf/decks/pertemuan-1-teacher-deck.pdf" target="_blank" rel="noopener">PDF Deck</a>
+                </div>
+              </div>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Blind Box &amp; Spin Wheel Cadangan</p>
+                <div class="day-links">
+                  <a class="button primary" href="tools/spin-wheel-day1.html">Buka Spin Wheel Cadangan</a>
+                </div>
+                <p class="resource-note">Aktivitas utama tetap memakai kartu blind box yang diprint dan digunting guru dari learning kit. Spin wheel ini hanya cadangan jika guru ingin memilih bahan utama secara digital di kelas.</p>
+              </div>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Tes Siswa</p>
+                <div class="resource-grid">
+                  <a class="button" href="tests/day1/pre-test-1.pdf" target="_blank" rel="noopener">Pre Test 1</a>
+                  <a class="button" href="tests/day1/post-test-1.pdf" target="_blank" rel="noopener">Post Test 1</a>
+                  <a class="button" href="tests/day1/kunci-jawaban-1.pdf" target="_blank" rel="noopener">Kunci Jawaban 1</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="day-card" id="pertemuan-2">
+            <div class="day-header">
+              <div>
+                <h3>Pertemuan 2: Build Your Business Plan</h3>
+                <p>Design Your Mini Food Brand: modal, harga final, packaging, booth plan, dan produksi rumah.</p>
+              </div>
+              <span class="duration">100 menit</span>
+            </div>
+            <div class="day-body">
+              <ul class="overview-list">
+                <li>Fokus siswa: membuat rencana bisnis mini yang siap dicoba.</li>
+                <li>Fokus matematika: total modal, modal per produk, harga jual, balik modal.</li>
+                <li>Output: Worksheet 4-7 dan Production Planner.</li>
+              </ul>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Deck Guru</p>
+                <div class="day-links">
+                  <a class="button primary" href="decks/pertemuan-2-teacher-deck.html">Buka Deck Presentasi</a>
+                  <a class="button print" href="pdf/decks/pertemuan-2-teacher-deck.pdf" target="_blank" rel="noopener">PDF Deck</a>
+                </div>
+              </div>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Tes Siswa</p>
+                <div class="resource-grid">
+                  <a class="button" href="tests/day2/pre-test-2.pdf" target="_blank" rel="noopener">Pre Test 2</a>
+                  <a class="button" href="tests/day2/post-test-2.pdf" target="_blank" rel="noopener">Post Test 2</a>
+                  <a class="button" href="tests/day2/kunci-jawaban-2.pdf" target="_blank" rel="noopener">Kunci Jawaban 2</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="day-card" id="pertemuan-3">
+            <div class="day-header">
+              <div>
+                <h3>Pertemuan 3: Launch &amp; Market Day</h3>
+                <p>Food Market Day: sales script, setup booth, jual produk, hitung profit, dan refleksi entrepreneur.</p>
+              </div>
+              <span class="duration">100 menit</span>
+            </div>
+            <div class="day-body">
+              <ul class="overview-list">
+                <li>Fokus siswa: membuka booth dan menawarkan produk dengan percaya diri.</li>
+                <li>Fokus matematika: total penjualan, produk terjual, laba atau rugi.</li>
+                <li>Output: Worksheet 8, market day, dan Worksheet 9.</li>
+              </ul>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Deck Guru</p>
+                <div class="day-links">
+                  <a class="button primary" href="decks/pertemuan-3-teacher-deck.html">Buka Deck Presentasi</a>
+                  <a class="button print" href="pdf/decks/pertemuan-3-teacher-deck.pdf" target="_blank" rel="noopener">PDF Deck</a>
+                </div>
+              </div>
+              <div class="resource-block">
+                <p class="resource-title"><span class="dot"></span>Tes Siswa</p>
+                <div class="resource-grid">
+                  <a class="button" href="tests/day3/pre-test-3.pdf" target="_blank" rel="noopener">Pre Test 3</a>
+                  <a class="button" href="tests/day3/post-test-3.pdf" target="_blank" rel="noopener">Post Test 3</a>
+                  <a class="button" href="tests/day3/kunci-jawaban-3.pdf" target="_blank" rel="noopener">Kunci Jawaban 3</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="teacher-checklist">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Checklist Guru</p>
+            <h2 id="teacher-checklist">Sebelum Kelas Dimulai</h2>
+          </div>
+          <p class="section-note">Ringkasan singkat agar semua perlengkapan bisa disiapkan tanpa membuka deck satu per satu.</p>
+        </div>
+        <div class="check-grid">
+          <article class="check-card">
+            <h3>Pertemuan 1</h3>
+            <ul>
+              <li>Print worksheet Day 1 dan kartu blind box bahan utama.</li>
+              <li>Siapkan gunting, timer, dan contoh logo sederhana.</li>
+              <li>Print Pre Test 1 dan Post Test 1.</li>
+            </ul>
+          </article>
+          <article class="check-card">
+            <h3>Pertemuan 2</h3>
+            <ul>
+              <li>Print Worksheet 4-7 dan Production Planner.</li>
+              <li>Siapkan contoh harga, kalkulator/timer, dan alat gambar.</li>
+              <li>Print Pre Test 2 dan Post Test 2.</li>
+            </ul>
+          </article>
+          <article class="check-card">
+            <h3>Pertemuan 3</h3>
+            <ul>
+              <li>Print Worksheet 8-9, price tag, dan catatan penjualan.</li>
+              <li>Atur area booth dan token/uang simulasi jika dipakai.</li>
+              <li>Print Pre Test 3 dan Post Test 3.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="notice">
+          Catatan GitHub Pages: semua tombol di halaman ini memakai file raw di repository yang sama. Selama repository GitHub Pages aktif, hub, deck, PDF, test, kunci jawaban, dan spin wheel cadangan tetap bisa dibuka. Tombol PDF/test dibuka di tab baru. Untuk kelas offline, tetap siapkan worksheet dan tes dalam bentuk print sebelum kelas dimulai.
+        </p>
+      </section>
+
+      <footer>
+        Math Champs Holiday Program F&amp;B Teaching Kit Offline - terakhir dirapikan 16 Juni 2026.
+      </footer>
+    </main>
+  </body>
+</html>
